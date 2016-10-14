@@ -180,11 +180,13 @@ public class FileDao {
 		InputStream is = dao.directRead(file);
 
 		FileOutputStream fos = null;
+		byte[] buffer = new byte[2048];
 		try {
 			fos = new FileOutputStream("c:/temp/" + file);
-			byte[] contents = new byte[is.available()];
-			is.read(contents);
-			fos.write(contents);
+			int len = 0;
+			while ((len = is.read(buffer)) > 0) {
+				fos.write(buffer);
+			}
 			fos.flush();
 
 		} catch (FileNotFoundException e) {

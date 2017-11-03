@@ -19,8 +19,9 @@ public class Dictionary {
 			int newLength = keys.length + 1;
 			String[] newKeys = new String[newLength];
 			String[] newValues = new String[newLength];
-			System.arraycopy(keys, 0, newKeys, 0, 1);
-			System.arraycopy(values, 0, newValues, 0, 1);
+			// Copies to new array
+			System.arraycopy(keys, 0, newKeys, 0, keys.length);
+			System.arraycopy(values, 0, newValues, 0, values.length);
 			keys = newKeys;
 			values = newValues;
 			keys[index] = word1;
@@ -56,9 +57,16 @@ public class Dictionary {
 
 	}
 
-	boolean same(String word1, String word2) throws NotFoundException {
+	boolean same(String key, String value) throws NotFoundException {
 		boolean same = false;
-
+		int index = 0;
+		for (String keyValue : keys) {
+			if (key.equalsIgnoreCase(keyValue)) {
+				value.equalsIgnoreCase(values[index]);
+				return true;
+			}
+			index++;
+		}
 		return same;
 
 	}

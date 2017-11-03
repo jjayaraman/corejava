@@ -1,5 +1,7 @@
 package com.jai.corejava.core;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
 
 public class DictionaryTest extends TestCase {
@@ -41,5 +43,16 @@ public class DictionaryTest extends TestCase {
 
 	}
 
+	// Test to understand how System.arraycopy() works
+	public void testArrayCopy() {
+
+		String[] source = new String[] { "one", "two", "three", "four", "five" };
+		String[] dest = new String[] { "1", "2", "3", "4", "5" };
+
+		System.arraycopy(source, 0, dest, 0, 3);
+
+		System.out.println(Arrays.toString(source));
+		System.out.println(Arrays.toString(dest));
+	}
 
 }

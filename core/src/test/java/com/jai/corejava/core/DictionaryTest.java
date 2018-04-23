@@ -35,6 +35,7 @@ public class DictionaryTest extends TestCase {
 			dict.remove("ECS510");
 			module = dict.equiv("ECS510");
 			System.out.println("The module with code ECS510 is: " + module);
+			System.out.println("Number of modules is: " + dict.size());
 		}
 		catch (NotFoundException e) {
 			module = e.getMessage();
@@ -53,6 +54,23 @@ public class DictionaryTest extends TestCase {
 
 		System.out.println(Arrays.toString(source));
 		System.out.println(Arrays.toString(dest));
+	}
+
+	// Test to understand how System.arraycopy() works
+	public void testArrayCopy2() {
+
+		String[] source = new String[] { "one", "two", "three", "four", "five" };
+		String[] dest = new String[source.length - 1];
+		int index = 0;
+		for (String value : source) {
+			if (!value.equalsIgnoreCase("three")) {
+				System.arraycopy(source, 0, dest, 0, dest.length);
+				System.out.println(Arrays.toString(source));
+				System.out.println(Arrays.toString(dest));
+			}
+			index++;
+		}
+
 	}
 
 }

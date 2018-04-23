@@ -42,10 +42,10 @@ public class Dictionary {
 		return contains;
 	}
 
-	String equiv(String word) throws NotFoundException {
+	String equiv(String keyInput) throws NotFoundException {
 		int index = 0;
 		for (String key : keys) {
-			if (key != null && key.equalsIgnoreCase(word)) {
+			if (key != null && key.equalsIgnoreCase(keyInput)) {
 				return values[index];
 			}
 			index++;
@@ -53,8 +53,22 @@ public class Dictionary {
 		return null;
 	}
 
-	void remove(String word) throws NotFoundException {
+	void remove(String keyInput) throws NotFoundException {
 
+		int index = 0;
+		String[] newKeys = new String[keys.length - 1];
+		String[] newValues = new String[keys.length - 1];
+
+		for (String key : keys) {
+			if (keyInput.equalsIgnoreCase(key)) {
+				keys[index] = null;
+				values[index] = null;
+			}
+			System.arraycopy(keys, 0, newKeys, 0, keys.length);
+			System.arraycopy(values, 0, newValues, 0, values.length);
+
+			index++;
+		}
 	}
 
 	boolean same(String key, String value) throws NotFoundException {
@@ -68,7 +82,6 @@ public class Dictionary {
 			index++;
 		}
 		return same;
-
 	}
 
 	int size() {

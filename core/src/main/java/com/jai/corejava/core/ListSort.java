@@ -1,8 +1,12 @@
+package com.jai.corejava.core;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListSort {
 
-    List<String> data = new ArrayList<String>();
-
     public static void main(String[] args) {
-        System.out.println('list : ' +data)
+        List<String> data = new ArrayList<String>();
+        System.out.println("list : " +data);
     }
 }
